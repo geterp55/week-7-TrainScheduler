@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+</!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    
+    <!-- <link rel="stylesheet" type="text/css" href="Week-7-Firebase/assets/css/style.css"> -->
+
+    <!-- Added Moment JS -->
+ 	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+	
+	<!-- Firebase Reference -->
+	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+</head>
+<body>
+<div class="container">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="jumbotron">
+		<div class="container">
+			<h1>S.A.A.T.M.M.  Scheduling System</h1>
+			<p>Synchronos Asynchronos Automated Train Management Modulus Scheduling System </p>
+			<p>Sophisticated train scheduler based on atomic time. Accurately predicts incorrect destination time to miss all arrivals and departures.  Cross-development collaboration by NASA, MIT and ZIPPY the clown. </p>
+		</div>
+	</div>
+	
+	<!-- Displayed Data -->
+	<div id="displayedData">
+		
+	</div> 
+<!--Table -->	
+		<table class="table table-striped table-hover" id="tschedule">
+		<legend>Current Train Schedule</legend>
+			<thead>
+				<tr>
+					<th>Train Name</th>
+					<th>Destination</th>
+					<th>Frequency</th>
+					<th>Next Arrival</th>
+					<th>Minutes Away</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				
+			</tbody>
+		</table>
+
+
+
+<!--FORM-->
+	<form action="" method="POST" role="form" id="form">
+	
+		<legend>Add Train</legend>
+		
+		
+		<div class="form-group">
+			<label for="">Train Name</label>
+			<input type="text" class="form-control" id="trainName" placeholder="Input field">
+		</div>
+
+		<div class="form-group">
+			<label for="">Destination</label>
+			<input type="text" class="form-control" id="destination" placeholder="Input field">
+		</div>
+		
+		<div class="form-group">
+			<label for="">First Train Time (HH:mm - military time)</label>
+			<input type="text" class="form-control" id="firstTime" placeholder="Input field">
+		</div>
+
+		<div class="form-group">
+			<label for="">Frequency</label>
+			<input type="text" class="form-control" id="frequency" placeholder="Input field">
+		</div>
+		<button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+	</form>
+
+</div>
+
+<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="assets/javascript/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+// Steps to complete:
+/*
+1. Create Firebase link
+2. Create button for adding new employees - then update the html + update the database
+3. Create a way to retrive employees from the emplyee database.
+4. Create a way to calculate the months worked.  Using differenc between start and current time.  Then use moment.js formating to se diference in months.
+5. Calculate total billing.
+*/
+// 1. Link to Firebase
+var tData = new Firebase("https://blistering-torch-6442.firebaseio.com/");
+
+// 2. Button for adding Employees
+$("#submitBtn").on("click", function() {
+
+	//Grab user input
+	var tName = $("#trainName").val().trim();
+	var tDestination = $("#destination").val().trim();
+	var tFirstTime = $("#firstTime").val().trim();
+	var tFrequency = $("#frequency").val().trim();
+
+	// Creates local "tmeporary" object for holding employee data
+	var newT = {
+		name: tName;
+		role: tDestination;
+		start: tFirstTime;
+		rate: tFrequency
+	}
+
+	// Uploads employee data to the database
+	tData.push(newT);
+
+	//Logs everything to console
+	console.log(newT.tName);
+	console.log(newT.tDestination);
+	console.log(newT.tFirstTime);
+	console.log(newT.tFrequency)
+
+	// Alert
+	alert("Train successfully added");
+
+	// Clears all of the text-boxes
+	$("#employeeNameInput").val("");
+	$("#roleInput").val("");
+	$("#startInput").val("");
+	$("#rateInput").val("");
+
+	// Prevent moving to new page
+	return false;
+});
+
+// 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+tData.on("child_added", function(childSnapshot, prevChildKey) {
+
+	console.log(childSnapshot.val());
+
+	// Store eveything into a variable.
+	var tName = childSnapshot.val().trainName;
+	var tDestination = childSnapshot.val().destination;
+	var tFirstTime = childSnapshot.val().firstTime;
+	var tFrequeny = childSnapshot.val().frequency;
+
+	//Employee Info
+	console.log(tName);
+	console.log(tDestination);
+	console.log(tFirstTime);
+	console.log(tFrequency);
+
+	// Prettify the employee start
+	var empStartPretty = moment.unix(empStart).format("MM/DD/YY");
+	//Calculate the months worked using hardcore math
+	// To calculate the months worked
+	var empMonths = moment().diff(moment.unix(empStart, 'X'), "months");
+	console.log(empMonths);
+
+	// Calculate the total billed rate
+	var emBilled = empMonths * empRate;
+	console.log(empBilled);
+
+	// Add each train's data into the table
+	$("#tschedule > tbody").append("<tr><td>" + tName + "</td><td>" + tDestination + "</td><td>" + tFirstTime + "</td><td>" + tFrequeny + "</td></tr>");
+});
