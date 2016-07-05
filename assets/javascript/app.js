@@ -4,7 +4,7 @@ var tData = new Firebase("https://blistering-torch-6442.firebaseio.com/");
 
 
 $("#submitBtn").on("click", function() {
-
+	console.log("hi")
 	
 	var tName = $("#trainName").val().trim();
 	var tDestination = $("#destination").val().trim();
